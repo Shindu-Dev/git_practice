@@ -1,0 +1,578 @@
+[
+	{
+		"model": "FightScheduler.StatusCode",
+		"fields": {
+			"StatusCode": "NEW",
+			"statusCodeName": "New",
+			"description": "New User"
+		}
+	},
+	{
+		"model": "FightScheduler.StatusCode",
+		"fields": {
+			"StatusCode": "ACTIVE",
+			"statusCodeName": "Active",
+			"description": "Active"
+		}
+	},
+	{
+		"model": "FightScheduler.StatusCode",
+		"fields": {
+			"StatusCode": "LOCKED",
+			"statusCodeName": "Locked",
+			"description": "Locked"
+		}
+	},
+	{
+		"model": "FightScheduler.StatusCode",
+		"fields": {
+			"StatusCode": "DIS",
+			"statusCodeName": "Disabled",
+			"description": "Disabled"
+		}
+	},
+	{
+		"model": "FightScheduler.AccountType",
+		"fields": {
+			"AccountTypeID": "0",
+			"name": "NonSystem",
+			"description": "Non System User"
+		}
+	},
+	{
+		"model": "FightScheduler.AccountType",
+		"fields": {
+			"AccountTypeID": "1",
+			"name": "User",
+			"description": "Regular User Account"
+		}
+	},
+	{
+		"model": "FightScheduler.AccountType",
+		"fields": {
+			"AccountTypeID": "2",
+			"name": "Administrator",
+			"description": "Club Administrator"
+		}
+	},
+	{
+		"model": "FightScheduler.AccountType",
+		"fields": {
+			"AccountTypeID": "3",
+			"name": "SystemAdministrator",
+			"description": "System Administrator"
+		}
+	},
+	{
+		"model": "FightScheduler.Role",
+		"fields": {
+			"RoleID": "0",
+			"name": "NonSystem",
+			"description": "Not a user in system"
+		}
+	},
+	{
+		"model": "FightScheduler.Role",
+		"fields": {
+			"RoleID": "1",
+			"name": "Adult Boxer",
+			"description": "Adult Boxer beloging to a club"
+		}
+	},
+	{
+		"model": "FightScheduler.Role",
+		"fields": {
+			"RoleID": "2",
+			"name": "Junior Boxer",
+			"description": "Junior Boxer belonging to a club"
+		}
+	},
+	{
+		"model": "FightScheduler.Role",
+		"fields": {
+			"RoleID": "3",
+			"name": "Coach",
+			"description": "Coach "
+		}
+	},
+	{
+		"model": "FightScheduler.Role",
+		"fields": {
+			"RoleID": "4",
+			"name": "Owner",
+			"description": "Club owner"
+		}
+	},
+	{
+		"model": "FightScheduler.Role",
+		"fields": {
+			"RoleID": "5",
+			"name": "Official",
+			"description": "Official"
+		}
+	},
+	{
+		"model": "FightScheduler.Role",
+		"fields": {
+			"RoleID": "6",
+			"name": "Club President",
+			"description": "Club President"
+		}
+	},
+	{
+		"model": "FightScheduler.Role",
+		"fields": {
+			"RoleID": "7",
+			"name": "Boxing Ontario Admin",
+			"description": "Boxing Ontario Administrator"
+		}
+	},
+	{
+		"model": "FightScheduler.Address",
+		"fields": {
+			"AddressID": "1",
+			"streetNumber": "3701",
+			"street": "Danforth Ave",
+			"city": "Scarborough",
+			"province": "ON",
+			"postalCode": "M1N 2G2",
+			"lastModified": "null`"
+		}
+	},
+	{
+		"model": "FightScheduler.Person",
+		"fields": {
+			"PersonID": "1",
+			"username": " ",
+			"password": " ",
+			"emailAddress": " ",
+			"statusCode": "ACTIVE",
+			"accountTypeID": "0"
+		}
+	},
+	{
+		"model": "FightScheduler.Organization",
+		"fields": {
+			"OrganizationID": "1",
+			"organizationName": "Boxing Ontario",
+			"organizationShortName": "Boxing Ontario",
+			"physicalAddressID": "1",
+			"mailingAddressID": "1",
+			"clubOwnerUserID": "1",
+			"clubPresidentUserID": "1",
+			"clubCoachUserID": "1",
+			"phoneNumber": "4165555555",
+			"website": "www.boxingontario.com",
+			"email": "test@test.com",
+			"additionalInsurees": " ",
+			"clubMailRecipients": " ",
+			"clubEmailRecipients": " "
+		}
+	},
+	{
+		"model": "FightScheduler.Service",
+		"fields": {
+			"ServiceID": "1",
+			"code": "ELITE",
+			"shortName": "Elite2001",
+			"fullName": "Elite 2001 and earlier",
+			"cost": "105.00"
+		}
+	},
+	{
+		"model": "FightScheduler.Service",
+		"fields": {
+			"ServiceID": "2",
+			"code": "CHAMPS",
+			"shortName": "CHAMPSpgm",
+			"fullName": "CHAMPS program",
+			"cost": "0.00"
+		}
+	},
+	{
+		"model": "FightScheduler.Service",
+		"fields": {
+			"ServiceID": "3",
+			"code": "COACH",
+			"shortName": "Coach",
+			"fullName": "Registered Coach",
+			"cost": "105.00"
+		}
+	},
+	{
+		"model": "FightScheduler.Service",
+		"fields": {
+			"ServiceID": "4",
+			"code": "OFFICIALJUDGE",
+			"shortName": "OfficialJudge",
+			"fullName": "Registered Official",
+			"cost": "95.00"
+		}
+	},
+	{
+		"model": "FightScheduler.Service",
+		"fields": {
+			"ServiceID": "5",
+			"code": "OFFICIALREF",
+			"shortName": "OfficialRef",
+			"fullName": "Official Referee/Judge",
+			"cost": "95.00"
+		}
+	},
+	{
+		"model": "FightScheduler.Service",
+		"fields": {
+			"ServiceID": "6",
+			"code": "PASSBOOK",
+			"shortName": "ReplacementPassbook",
+			"fullName": "Replacement Passbook",
+			"cost": "20.00"
+		}
+	},
+	{
+		"model": "FightScheduler.Service",
+		"fields": {
+			"ServiceID": "7",
+			"code": "DUALMEMBDISC",
+			"shortName": "DualMembership",
+			"fullName": "Dual Membership",
+			"cost": "160.00"
+		}
+	},
+	{
+		"model": "FightScheduler.Service",
+		"fields": {
+			"ServiceID": "8",
+			"code": "TRIPLEMEMBDISC",
+			"shortName": "TripleMembership",
+			"fullName": "Triple Membership",
+			"cost": " 210.00"
+		}
+	},
+	{
+		"model": "FightScheduler.Service",
+		"fields": {
+			"ServiceID": "9",
+			"code": "FASTTRAK",
+			"shortName": "FastTrack",
+			"fullName": "Fast Track",
+			"cost": "10.00"
+		}
+	},
+	{
+		"model": "FightScheduler.Service",
+		"fields": {
+			"ServiceID": "10",
+			"code": "JUNIORA",
+			"shortName": "JuniorA",
+			"fullName": "Junior A Before CurrentYear-11",
+			"cost": "95.00"
+		}
+	},
+	{
+		"model": "FightScheduler.Service",
+		"fields": {
+			"ServiceID": "11",
+			"code": "JUNIORB",
+			"shortName": "JuniorB",
+			"fullName": "Junior B Before CurrentYear-13",
+			"cost": "95.00"
+		}
+	},
+	{
+		"model": "FightScheduler.Service",
+		"fields": {
+			"ServiceID": "12",
+			"code": "JUNIORC",
+			"shortName": "JuniorC",
+			"fullName": "Junior C Before CurrentYear-15",
+			"cost": "95.00"
+		}
+	},
+	{
+		"model": "FightScheduler.Service",
+		"fields": {
+			"ServiceID": "13",
+			"code": "JUNIORD",
+			"shortName": "JuniorD",
+			"fullName": "Junior D Before CurrentYear-17",
+			"cost": "95.00"
+		}
+	},
+	{
+		"model": "FightScheduler.AllowableService",
+		"fields": {
+			"AlowableServiceID": "1",
+			"RoleID": "1",
+			"ServiceID": "1"
+		}
+	},
+	{
+		"model": "FightScheduler.AllowableService",
+		"fields": {
+			"AlowableServiceID": "2",
+			"RoleID": "1",
+			"ServiceID": "2"
+		}
+	},
+	{
+		"model": "FightScheduler.AllowableService",
+		"fields": {
+			"AlowableServiceID": "3",
+			"RoleID": "3",
+			"ServiceID": "3"
+		}
+	},
+	{
+		"model": "FightScheduler.AllowableService",
+		"fields": {
+			"AlowableServiceID": "4",
+			"RoleID": "5",
+			"ServiceID": "4"
+		}
+	},
+	{
+		"model": "FightScheduler.AllowableService",
+		"fields": {
+			"AlowableServiceID": "5",
+			"RoleID": "5",
+			"ServiceID": "5"
+		}
+	},
+	{
+		"model": "FightScheduler.AllowableService",
+		"fields": {
+			"AlowableServiceID": "6",
+			"RoleID": "1",
+			"ServiceID": "6"
+		}
+	},
+	{
+		"model": "FightScheduler.AllowableService",
+		"fields": {
+			"AlowableServiceID": "7",
+			"RoleID": "0",
+			"ServiceID": "7"
+		}
+	},
+	{
+		"model": "FightScheduler.AllowableService",
+		"fields": {
+			"AlowableServiceID": "8",
+			"RoleID": "0",
+			"ServiceID": "8"
+		}
+	},
+	{
+		"model": "FightScheduler.AllowableService",
+		"fields": {
+			"AlowableServiceID": "9",
+			"RoleID": "0",
+			"ServiceID": "9"
+		}
+	},
+	{
+		"model": "FightScheduler.AllowableService",
+		"fields": {
+			"AlowableServiceID": "10",
+			"RoleID": "2",
+			"ServiceID": "10"
+		}
+	},
+	{
+		"model": "FightScheduler.AllowableService",
+		"fields": {
+			"AlowableServiceID": "11",
+			"RoleID": "2",
+			"ServiceID": "11"
+		}
+	},
+	{
+		"model": "FightScheduler.AllowableService",
+		"fields": {
+			"AlowableServiceID": "12",
+			"RoleID": "2",
+			"ServiceID": "12"
+		}
+	},
+	{
+		"model": "FightScheduler.AllowableService",
+		"fields": {
+			"AlowableServiceID": "13",
+			"RoleID": "2",
+			"ServiceID": "13"
+		}
+	},
+	{
+		"model": "FightScheduler.AllowableService",
+		"fields": {
+			"AlowableServiceID": "14",
+			"RoleID": "2",
+			"ServiceID": "2"
+		}
+	},
+	{
+		"model": "FightScheduler.AllowableService",
+		"fields": {
+			"AlowableServiceID": "15",
+			"RoleID": "2",
+			"ServiceID": "6"
+		}
+	},
+	{
+		"model": "FightScheduler.AllowableService",
+		"fields": {
+			"AlowableServiceID": "16",
+			"RoleID": "2",
+			"ServiceID": "9"
+		}
+	},
+	{
+		"model": "FightScheduler.Waiver",
+		"fields": {
+			"WaiverID": "1",
+			"name": "Attestation of truthfulness of boxer data and insurance acknowledgement",
+			"description": "  "
+		}
+	},
+	{
+		"model": "FightScheduler.Waiver",
+		"fields": {
+			"WaiverID": "2",
+			"name": "CONSENT FOR USE OF PERSONAL INFORMATION COMMERCIAL MESSAGES AND PHOTO RELEASE",
+			"description": " "
+		}
+	},
+	{
+		"model": "FightScheduler.Waiver",
+		"fields": {
+			"WaiverID": "3",
+			"name": "Concussion Code of Conduct",
+			"description": "  "
+		}
+	},
+	{
+		"model": "FightScheduler.Waiver",
+		"fields": {
+			"WaiverID": "4",
+			"name": " ",
+			"description": "  "
+		}
+	},
+	{
+		"model": "FightScheduler.Waiver",
+		"fields": {
+			"WaiverID": "5",
+			"name": "CONDITIONS FOR CLUB REGISTRATION ",
+			"description": "REGISTRATION WITH BOXING ONTARIO"
+		}
+	},
+	{
+		"model": "FightScheduler.WaiverRequirement",
+		"fields": {
+			"WaiverRequirementID": "1",
+			"roleID": "1",
+			"annualRenewalRequired": "True"
+		}
+	},
+	{
+		"model": "FightScheduler.WaiverRequirement",
+		"fields": {
+			"WaiverRequirementID": "2",
+			"roleID": "1",
+			"annualRenewalRequired": "True"
+		}
+	},
+	{
+		"model": "FightScheduler.WaiverRequirement",
+		"fields": {
+			"WaiverRequirementID": "3",
+			"roleID": "1",
+			"annualRenewalRequired": "False"
+		}
+	},
+	{
+		"model": "FightScheduler.WaiverRequirement",
+		"fields": {
+			"WaiverRequirementID": "4",
+			"roleID": "1",
+			"annualRenewalRequired": "False"
+		}
+	},
+	{
+		"model": "FightScheduler.WaiverRequirement",
+		"fields": {
+			"WaiverRequirementID": "5",
+			"roleID": "2",
+			"annualRenewalRequired": "False"
+		}
+	},
+	{
+		"model": "FightScheduler.WaiverRequirement",
+		"fields": {
+			"WaiverRequirementID": "6",
+			"roleID": "2",
+			"annualRenewalRequired": "False"
+		}
+	},
+	{
+		"model": "FightScheduler.WaiverRequirement",
+		"fields": {
+			"WaiverRequirementID": "7",
+			"roleID": "2",
+			"annualRenewalRequired": "False"
+		}
+	},
+	{
+		"model": "FightScheduler.WaiverRequirement",
+		"fields": {
+			"WaiverRequirementID": "8",
+			"roleID": "2",
+			"annualRenewalRequired": "False"
+		}
+	},
+	{
+		"model": "FightScheduler.WaiverRequirement",
+		"fields": {
+			"WaiverRequirementID": "9",
+			"roleID": "4",
+			"annualRenewalRequired": "True"
+		}
+	},
+	{
+		"model": "FightScheduler.MatchResultCode",
+		"fields": {
+			"MatchResultCode": "KO",
+			"description": "Knock Out"
+		}
+	},
+	{
+		"model": "FightScheduler.MatchResultCode",
+		"fields": {
+			"MatchResultCode": "TKO",
+			"description": "Technical Knock Out"
+		}
+	},
+	{
+		"model": "FightScheduler.MatchResultCode",
+		"fields": {
+			"MatchResultCode": "UD",
+			"description": "Unanimous Decision"
+		}
+	},
+	{
+		"model": "FightScheduler.MatchResultCode",
+		"fields": {
+			"MatchResultCode": "SD",
+			"description": "Split Decision"
+		}
+	},
+	{
+		"model": "FightScheduler.Series",
+		"fields": {
+			"SeriesID": "1",
+			"name": "Test tournament",
+			"organizationID": "1"
+		}
+	}
+]

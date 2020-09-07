@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<h1>Projects</h1>
+<div class="row">
+<!--{% for project in projects %} -->
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <img class="card-img-top" src="payam-tahery-raZ1Ga6PLr4-unsplash.jpg">
+            <div class="card-body">
+                <h5 class="card-title">Individual Registration</h5>
+                <p class="card-text">Register as a boxer/coach/judge/referee or all of the above</p>
+                <a href="{% url 'individual_registration' %}"
+                   class="btn btn-primary">
+                    Register
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <img class="card-img-top" src="david-guliciuc-o2zrjlM5s5o-unsplash.jpg">
+            <div class="card-body">
+                <h5 class="card-title">Club Registration</h5>
+                <p class="card-text">Register as a club</p>
+                <a href="{% url 'club_registration' %}"
+                   class="btn btn-primary">
+                    Register
+                </a>
+            </div>
+        </div>
+    </div>
+<!--    {% endfor %} -->
+</div>
+{% endblock %}

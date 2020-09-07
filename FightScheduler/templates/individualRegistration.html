@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/FightScheduler/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Account Info</li>
+	{% if user.is_authenticated %}
+		{% if request.session.accountInfo.personalInfoID != None %}
+			<li class="breadcrumb-item">
+					<a href="/FightScheduler/personalInfoUpdate/">Personal Info</a>
+			</li>
+		{% else %}
+			<li class="breadcrumb-item">
+					<a href="/FightScheduler/personalInfoCreate/">Personal Info</a>
+			</li>
+		
+		{% endif %}
+
+		{% if request.session.accountInfo.isBoxer == True %}
+			{% if request.session.accountInfo.careerID != None %}
+			<li class="breadcrumb-item">
+					<a href="/FightScheduler/careerUpdate/">Career Info</a>
+			</li>
+			{% else %}
+			<li class="breadcrumb-item">
+					<a href="/FightScheduler/careerCreate/">Career Info</a>
+			</li>
+			{% endif %}
+		{% endif %}
+		{% if request.session.accountInfo.isCoach == True or request.session.accountInfo.isOfficial == True or request.session.accountInfo.isOwner == True or request.session.accountInfo.isBoxingOntarioAdmin == True %}
+			{% if request.session.accountInfo.otherInfoID != None %}
+					<li class="breadcrumb-item">
+							<a href="/FightScheduler/otherInfoUpdate/">Other Info</a>
+					</li>
+			{% else %}
+					<li class="breadcrumb-item">
+							<a href="/FightScheduler/otherInfoCreate/">Other Info</a>
+					</li>				
+			{% endif %}
+		{% endif %}
+	{% endif %}
+	
+  </ol>
+</nav>
+
+                <h5 class="card-title">Account Info</h5>
+				{% if user.is_authenticated %}
+					<p class="card-text">Update account info</p>
+					<form action="{% url 'fightscheduler:personUpdate' %}" method="post">
+				{% else %}
+					<p class="card-text">Register a new user</p>
+					<form action="{% url 'fightscheduler:personCreate' %}" method="post">
+				{% endif %}
+					{% csrf_token %}
+					<div class="d-none">
+						{{ form.PersonID }}
+					</div>
+				{% if not user.is_authenticated %}
+					<div class="form-group">
+						{% if form.username.errors %}<div class="alert alert-danger">{{ form.username.errors}}</div>{% endif %}
+						<label for="username">Username</label>
+						{{ form.username }}
+<!--						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"> -->
+						<small id="usernameHelp" class="form-text text-muted">This will be your unique username to login to the system</small>
+					</div>
+					<div class="form-group">
+						{% if form.password.errors %}<div class="alert alert-danger">{{ form.password.errors}}</div>{% endif %}
+						<label for="password">Password</label>
+						{{ form.password }}
+						
+<!--						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"> -->
+						<small id="passwordHelp" class="form-text text-muted">Please choose a password that contains at least 8 characters with uppercase and lowercase letters and numbers</small>
+					</div>
+				{% else %}
+					<div class="form-group">
+						{% if form.username.errors %}<div class="alert alert-danger">{{ form.username.errors}}</div>{% endif %}
+						<label for="username">Username</label>
+						<div readonly>
+							{{ form.username }}
+						</div>
+<!--						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"> -->
+						<small id="usernameHelp" class="form-text text-muted">This will be your unique username to login to the system</small>				
+				{% endif %}
+					<div class="form-group">
+						{% if form.first_name.errors %}<div class="alert alert-danger">{{ form.first_name.errors}}</div>{% endif %}
+						<label for="first_name">First Name</label>
+						{{ form.first_name }}
+<!--						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"> -->
+						<small id="firstNameHelp" class="form-text text-muted"></small>
+					</div>
+					<div class="form-group">
+						{% if form.first_name.errors %}<div class="alert alert-danger">{{ form.last_name.errors}}</div>{% endif %}
+						<label for="last_name">Last Name</label>
+						{{ form.last_name }}
+<!--						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"> -->
+						<small id="lastNameHelp" class="form-text text-muted"></small>
+					</div>
+					<div class="form-group">
+						{% if form.email.errors %}<div class="alert alert-danger">{{ form.email.errors}}</div>{% endif %}
+						<label for="email">Email Address</label>
+						{{ form.email }}
+
+<!--						<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"> -->
+						<small id="emailHelp" class="form-text text-muted">We will never share your email address</small>
+					</div>
+					
+					<p> I am registering as a: (select all that apply)</p>
+
+					<div class="form-group form-check">
+						<label class="form-check-label">
+							{{ form.isBoxer }} Boxer
+						</label>
+					</div>
+					<div class="form-group form-check">
+						<label class="form-check-label">
+							{{ form.isCoach }} Coach
+						</label>
+					</div>
+					<div class="form-group form-check">
+						<label class="form-check-label">
+							{{ form.isOwner }} Club Administrator
+						</label>
+					</div>
+					<div class="form-group form-check">
+						<label class="form-check-label">
+							{{ form.isOfficial }} Boxing Ontario Official
+						</label>
+					</div>
+					<div class="form-group form-check">
+						<label class="form-check-label">
+							{{ form.isBoxingOntarioAdmin }} Boxing Ontario Administrator
+						</label>
+					</div>
+					
+					
+					{% if user.is_authenticated %}
+						<button type="submit" class="btn btn-primary" style="float:right">Update Account</button>
+					{% else %}
+						<button type="submit" class="btn btn-primary" style="float:right">Create Account</button>
+					{% endif %}					
+				</form>
+{% endblock %}

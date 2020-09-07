@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<h1>Welcome</h1>
+
+<div class="row">
+
+	{% if user.is_authenticated %}
+		{% if request.session.accountInfo.isOfficial == True %}
+		<div class="col-md-4">
+			<div class="card mb-2">
+				<img class="card-img-top" src="{% static "FightScheduler/img/payam-tahery-raZ1Ga6PLr4-unsplash-small.jpg" %}" alt"Individual Registration">
+				<div class="card-body">
+					<h5 class="card-title">Register Match</h5>
+					<p class="card-text">Register results of a match</p>
+					<a href="{% url 'fightscheduler:matchCreate' %}" class="btn btn-primary">Register</a>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+		
+		{% if request.session.accountInfo.isCoach == True %}
+		<div class="col-md-4">
+			<div class="card mb-2">
+				<img class="card-img-top" src="{% static "FightScheduler/img/david-guliciuc-o2zrjlM5s5o-unsplash-small.jpg" %}" alt"Club Registration">
+				<div class="card-body">
+					<h5 class="card-title">Setup Training Schedule</h5>
+					<p class="card-text">Schedule training with boxers</p>
+					<a href="{% url 'fightscheduler:clubRegistration' %}"
+					   class="btn btn-primary">
+						Schedule
+					</a>
+				</div>
+			</div>
+		</div>
+		{%endif %}
+
+		{% if request.session.accountInfo.isBoxer == True or request.session.accountInfo.isCoach == True or request.session.accountInfo.isOfficial == True %}
+		<div class="col-md-4">
+			<div class="card mb-2">
+				<img class="card-img-top" src="{% static "FightScheduler/img/david-guliciuc-o2zrjlM5s5o-unsplash-small.jpg" %}" alt"Club Registration">
+				<div class="card-body">
+					<h5 class="card-title">Update Your Availability</h5>
+					<p class="card-text">Update your availability schedule</p>
+					<a href="{% url 'fightscheduler:availabilityCreate' %}"
+					   class="btn btn-primary">
+						Update
+					</a>
+				</div>
+			</div>
+		</div>
+		{%endif %}
+
+		{% if request.session.accountInfo.isOwner == True %}
+		<div class="col-md-4">
+			<div class="card mb-2">
+				<img class="card-img-top" src="{% static "FightScheduler/img/david-guliciuc-o2zrjlM5s5o-unsplash-small.jpg" %}" alt"Club Registration">
+				<div class="card-body">
+					<h5 class="card-title">Update Club Info</h5>
+					<p class="card-text">Update your club's info</p>
+					<a href="{% url 'fightscheduler:clubRegistration' %}"
+					   class="btn btn-primary">
+						Update
+					</a>
+				</div>
+			</div>
+		</div>
+		{%endif %}
+
+		<div class="col-md-4">
+			<div class="card mb-2">
+				<img class="card-img-top" src="{% static "FightScheduler/img/payam-tahery-raZ1Ga6PLr4-unsplash-small.jpg" %}" alt"Individual Registration">
+				<div class="card-body">
+					<h5 class="card-title">Review Matches</h5>
+					<p class="card-text">View past match results</p>
+					<a href="{% url 'fightscheduler:personUpdate' %}" class="btn btn-primary">View</a>
+				</div>
+			</div>
+		</div>
+	{% endif %}
+	
+	
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <img class="card-img-top" src="{% static "FightScheduler/img/payam-tahery-raZ1Ga6PLr4-unsplash-small.jpg" %}" alt"Individual Registration">
+            <div class="card-body">
+				{% if user.is_authenticated %}
+                <h5 class="card-title">Update Account Info</h5>
+                <p class="card-text">Update Account Info</p>
+					{% csrf_token %}
+					<a href="{% url 'fightscheduler:personUpdate' %}" class="btn btn-primary">Update</a>
+				{% else %}
+                <h5 class="card-title">Individual Registration</h5>
+                <p class="card-text">Register as a boxer/owner/ coach/judge/referee</p>
+					{% csrf_token %}
+					<a href="{% url 'fightscheduler:personCreate' %}" class="btn btn-primary">Register</a>
+				{% endif %}
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

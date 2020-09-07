@@ -1,0 +1,153 @@
+<div class="form-group">
+	{% if form.AvailabilityScheduleID.errors %}<div class="alert alert-danger">{{ form.AvailabilityScheduleID.errors}}</div>{% endif %}
+		<label for=AvailabilityScheduleID"> Availability Schedule ID</label>
+		{{ form.AvailabilityScheduleID }}
+	<small id="" class="form-text text-muted"></small>
+</div>
+<div class="form-group">
+	{% if form.user.errors %}<div class="alert alert-danger">{{ form.user.errors}}</div>{% endif %}
+		<label for=user"> User for Availability Schedule</label>
+		{{ form.user }}
+	<small id="" class="form-text text-muted"></small>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.callToConfirmAvailability}}callToConfirmAvailability
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.sundayAMAvailability}}sundayAMAvailability
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.mondayAMAvailability}}mondayAMAvailability
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.tuesdayAMAvailability}}tuesdayAMAvailability
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.wednesdayAMAvailability}}wednesdayAMAvailability
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.thursdayAMAvailability}}thursdayAMAvailability
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.fridayAMAvailability}}fridayAMAvailability
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.saturdayAMAvailability}}saturdayAMAvailability
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.sundayPMAvailability}}sundayPMAvailability
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.mondayPMAvailability}}mondayPMAvailability
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.tuesdayPMAvailability}}tuesdayPMAvailability
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.wednesdayPMAvailability}}wednesdayPMAvailability
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.thursdayPMAvailability}}thursdayPMAvailability
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.fridayPMAvailability}}fridayPMAvailability
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.saturdayPMAvailability}}saturdayPMAvailability
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.availableJanuary}}availableJanuary
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.availableFebruary}}availableFebruary
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.availableMarch}}availableMarch
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.availableApril}}availableApril
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.availableMay}}availableMay
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.availableJune}}availableJune
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.availableJuly}}availableJuly
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.availableAugust}}availableAugust
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.availableSeptember}}availableSeptember
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.availableOctober}}availableOctober
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.availableNovember}}availableNovember
+	</label>
+</div>
+<div class="form-group form-check">
+	<label class="form-check-label">
+		{{ form.availableDecember}}availableDecember
+	</label>
+</div>
+<div class="form-group">
+	{% if form..errors %}<div class="alert alert-danger">{{ form..errors}}</div>{% endif %}
+		<label for="></label>
+		{{ form. }}
+	<small id="" class="form-text text-muted"></small>
+</div>

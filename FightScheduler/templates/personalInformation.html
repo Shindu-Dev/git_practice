@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+{% if user.is_authenticated %}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/FightScheduler/">Home</a></li>
+	<li class="breadcrumb-item"><a href="/FightScheduler/personUpdate/">Account Info</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Personal Info</li>
+	{% if request.session.accountInfo.isBoxer == True %}
+		{% if request.session.accountInfo.careerID != None %}
+			<li class="breadcrumb-item">
+					<a href="/FightScheduler/careerUpdate/">Career Info</a>
+			</li>
+		{% else %}
+			<li class="breadcrumb-item">
+					<a href="/FightScheduler/careerCreate/">Career Info</a>
+			</li>
+		{% endif %}
+	{% endif %}
+	{% if request.session.accountInfo.isCoach == True or request.session.accountInfo.isOfficial == True or request.session.accountInfo.isOwner == True or request.session.accountInfo.isBoxingOntarioAdmin == True %}
+		{% if request.session.accountInfo.otherInfoID != None %}
+				<li class="breadcrumb-item">
+						<a href="/FightScheduler/otherInfoUpdate/">Other Info</a>
+				</li>
+		{% else %}
+				<li class="breadcrumb-item">
+						<a href="/FightScheduler/otherInfoCreate/">Other Info</a>
+				</li>				
+		{% endif %}
+	{% endif %}
+	
+  </ol>
+</nav>
+
+<p class="card-text">{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ field }} {{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+</p>
+
+
+			{% if request.session.accountInfo.personalInfoID != None %}
+                <h5 class="card-title">Update Personal Information</h5>
+				<form action="{% url 'fightscheduler:personalInfoUpdate' %}" method="post">
+			{% else %}
+                <h5 class="card-title">Tell Us About Yourself</h5>
+				<form action="{% url 'fightscheduler:personalInfoCreate' %}" method="post">
+			{% endif %}
+					 {% csrf_token %}
+				{{ form.addressID }}
+					<div class="form-group">
+						{% if form.streetNumber.errors %}<div class="alert alert-danger">{{ form.streetNumber.errors}}</div>{% endif %}
+						<label for=streetNumber">Street Number</label>
+						{{ form.streetNumber }}
+						<small id="" class="form-text text-muted"></small>
+					</div>
+					<div class="form-group">
+						{% if form.street.errors %}<div class="alert alert-danger">{{ form.street.errors}}</div>{% endif %}
+						<label for=street">Street</label>
+						{{ form.street }}
+						<small id="" class="form-text text-muted"></small>
+					</div>
+					<div class="form-group">
+						{% if form.city.errors %}<div class="alert alert-danger">{{ form.city.errors}}</div>{% endif %}
+						<label for=city">City</label>
+						{{ form.city }}
+						<small id="" class="form-text text-muted"></small>
+					</div>
+					<div class="form-group">
+						{% if form.province.errors %}<div class="alert alert-danger">{{ form.province.errors}}</div>{% endif %}
+						<label for=province">Province</label>
+						{{ form.province }}
+						<small id="" class="form-text text-muted"></small>
+					</div>
+					<div class="form-group">
+						{% if form.postalCode.errors %}<div class="alert alert-danger">{{ form.postalCode.errors}}</div>{% endif %}
+						<label for=postalCode">Postal Code</label>
+						{{ form.postalCode }}
+						<small id="" class="form-text text-muted"></small>
+					</div>
+					<div class="form-group">
+						{% if form.businessPhone.errors %}<div class="alert alert-danger">{{ form.businessPhone.errors}}</div>{% endif %}
+						<label for="businessPhone">Business Phone</label>
+						{{ form.businessPhone }}
+						<small id="" class="form-text text-muted"></small>
+					</div>
+					<div class="form-group">
+						{% if form.phoneExtension.errors %}<div class="alert alert-danger">{{ form.phoneExtension.errors}}</div>{% endif %}
+						<label for="phoneExtension">Phone Extension</label>
+						{{ form.phoneExtension }}
+						<small id="" class="form-text text-muted"></small>
+					</div>
+					<div class="form-group">
+						{% if form.homePhone.errors %}<div class="alert alert-danger">{{ form.homePhone.errors}}</div>{% endif %}
+						<label for="homePhone">Home Phone</label>
+						{{ form.homePhone }}
+						<small id="" class="form-text text-muted"></small>
+					</div>
+					<div class="form-group">
+						{% if form.cellPhone.errors %}<div class="alert alert-danger">{{ form.cellPhone.errors}}</div>{% endif %}
+						<label for="cellPhone">Cell Phone</label>
+						{{ form.cellPhone }}
+						<small id="" class="form-text text-muted"></small>
+					</div>
+					<div class="form-group">
+						{% if form.fax.errors %}<div class="alert alert-danger">{{ form.fax.errors}}</div>{% endif %}
+						<label for="fax">Fax Number</label>
+						{{ form.fax }}
+						<small id="" class="form-text text-muted"></small>
+					</div>
+					<div class="form-group">
+						{% if form.citizenship.errors %}<div class="alert alert-danger">{{ form.citizenship.errors}}</div>{% endif %}
+						<label for="citizenship">Citizenship</label>
+						{{ form.citizenship }}
+						<small id="" class="form-text text-muted"></small>
+					</div>
+					<div class="form-group">
+						{% if form.organizationID.errors %}<div class="alert alert-danger">{{ form.organizationID.errors}}</div>{% endif %}
+						<label for="clubName">Club</label>
+						{{ form.organizationID }}
+						<small id="" class="form-text text-muted"></small>
+					</div>
+
+					{% if request.session.accountInfo.personalInfoID != None %}
+					<button type="submit" class="btn btn-primary" style="float:right">Update</button>
+					{% else %}
+					<button type="submit" class="btn btn-primary" style="float:right">Save</button>
+					{% endif %}
+
+				</form>
+{% else %}
+	Please re-login or register from the home page.
+{% endif %}
+{% endblock %}

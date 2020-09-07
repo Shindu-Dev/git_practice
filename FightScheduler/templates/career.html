@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+
+{% if user.is_authenticated %}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+	<li class="breadcrumb-item"><a href="/FightScheduler/">Home</a></li>
+	<li class="breadcrumb-item"><a href="/FightScheduler/personUpdate/">Account Info</a></li>
+	<li class="breadcrumb-item">
+		{% if request.session.accountInfo.personalInfoID == None %}
+			<a href="/FightScheduler/personalInfoCreate/">Personal Info</a>
+		{% else %}
+			<a href="/FightScheduler/personalInfoUpdate/">Personal Info</a>
+		{% endif %}
+	</li>
+	<li class="breadcrumb-item" active" aria-current="page">Career Info</li>
+	{% if request.session.accountInfo.isCoach == True or request.session.accountInfo.isOfficial == True or request.session.accountInfo.isOwner == True or request.session.accountInfo.isBoxingOntarioAdmin == True %}
+		{% if request.session.accountInfo.otherInfoID != None %}
+				<li class="breadcrumb-item"></li>
+						<a href="/FightScheduler/otherInfoUpdate/">Other Info</a>
+				</li>
+		{% else %}
+				<li class="breadcrumb-item"></li>
+						<a href="/FightScheduler/otherInfoCreate/">Other Info</a>
+				</li>				
+		{% endif %}
+	{% endif %}
+  </ol>
+</nav>
+
+<p class="card-text">{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ field }} {{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+</p>
+
+			{% if request.session.accountInfo.careerID != None %}
+                <h5 class="card-title">Update Career Information</h5>
+				<form action="{% url 'fightscheduler:careerUpdate' %}" method="post">
+			{% else %}
+                <h5 class="card-title">Tell Us Your Boxing Career History</h5>
+				<form action="{% url 'fightscheduler:careerCreate' %}" method="post">
+			{% endif %}
+					 {% csrf_token %}
+					{{ form.CareerID }}
+
+					<div class="form-group">
+						{% if form.genderCode.errors %}<div class="alert alert-danger">{{ form.genderCode.errors}}</div>{% endif %}
+						<label for="genderCode">Gender Category</label>
+						{{ form.genderCode }}
+						<small id="" class="form-text text-muted"> </small>
+					</div>
+					<div class="form-group">
+						{% if form.dateofBirth.errors %}<div class="alert alert-danger">{{ form.dateofBirth.errors}}</div>{% endif %}
+						<label for="dateofBirth">Date of Birth</label>
+						{{ form.dateofBirth }}
+						<small id="" class="form-text text-muted">MM/DD/YYYY - Strictly for classification purposes</small>
+					</div>
+					<div class="form-group">
+						{% if form.height.errors %}<div class="alert alert-danger">{{ form.height.errors}}</div>{% endif %}
+						<label for="height">Height (cms)</label>
+						{{ form.height }}
+						<small id="" class="form-text text-muted"></small>
+					</div>
+					<div class="form-group">
+						{% if form.currentWeight.errors %}<div class="alert alert-danger">{{ form.currentWeight.errors}}</div>{% endif %}
+						<label for=currentWeight"> Current Weight</label>
+						{{ form.currentWeight }}
+						<small id="" class="form-text text-muted"></small>
+					</div>
+					<div class="form-group">
+						{% if form.amateurBouts.errors %}<div class="alert alert-danger">{{ form.amateurBouts.errors}}</div>{% endif %}
+						<label for=amateurBouts"> Amateur Bouts</label>
+						{{ form.amateurBouts }}
+						<small id="" class="form-text text-muted"></small>
+					</div>
+					<div class="form-group">
+						{% if form.amateurWins.errors %}<div class="alert alert-danger">{{ form.amateurWins.errors}}</div>{% endif %}
+						<label for=amateurWins"> Amateur Wins</label>
+						{{ form.amateurWins }}
+						<small id="" class="form-text text-muted"></small>
+					</div>
+					<div class="form-group form-check">
+						<label class="form-check-label">
+						  {{ form.previousProfessionalCombatSportInvolvement }} I have previous or current involvement in professional boxing, kickboxing or any combat sport
+						</label>
+					</div>
+					{% if form.previousProfessionalCombatSportInvolvement.value == True %}
+						<div id="professionalExperience" class="collapse show">
+					{% else %}
+						<div id="professionalExperience" class="collapse">
+					{% endif %}
+					<small id="" class="form-text text-muted"></small>
+					{% if form.professionalYears.errors %}<div class="alert alert-danger">{{ form.professionalYears.errors}}</div>{% endif %}
+					<label for=professionalYears"> Professional Years</label>
+					{{ form.professionalYears }}
+					<small id="" class="form-text text-muted"></small>
+					{% if form.professionalBouts.errors %}<div class="alert alert-danger">{{ form.professionalBouts.errors}}</div>{% endif %}
+					<label for=professionalBouts"> Professional Bouts</label>
+					{{ form.professionalBouts }}
+					<small id="" class="form-text text-muted"></small>
+					{% if form.professionalWins.errors %}<div class="alert alert-danger">{{ form.professionalWins.errors}}</div>{% endif %}
+					<label for=professionalWins"> Professional Wins</label>
+					{{ form.professionalWins }}
+					</div>
+
+					<div class="form-group form-check">
+						<label class="form-check-label">
+						  {{ form.previousCombatSportInvolvementInOtherCountry }} I have previous or current involvement in amateur or professional boxing, kickboxing or any combat sport in another country
+						</label>
+					</div>
+
+					{% if form.previousCombatSportInvolvementInOtherCountry.value == True %}
+						<div id="foreignExperience" class="collapse show">
+					{% else %}
+						<div id="foreignExperience" class="collapse">
+					{% endif %}
+					{% if form.previousYearsOutofCountry.errors %}<div class="alert alert-danger">{{ form.previousYearsOutofCountry.errors}}</div>{% endif %}
+					<label for=previousYearsOutofCountry"> Previous Years Out of Country</label>
+					{{ form.previousYearsOutofCountry }}
+					<small id="" class="form-text text-muted"></small>
+					{% if form.previousBoutsOutofCountry.errors %}<div class="alert alert-danger">{{ form.previousBoutsOutofCountry.errors}}</div>{% endif %}
+					<label for=previousBoutsOutofCountry"> Previous Bouts Out of Country</label>
+					{{ form.previousBoutsOutofCountry }}
+					<small id="" class="form-text text-muted"></small>
+					{% if form.previousWinsOutofCountry.errors %}<div class="alert alert-danger">{{ form.previousWinsOutofCountry.errors}}</div>{% endif %}
+					<label for=previousWinsOutofCountry"> Previous Wins Out of Country</label>
+					{{ form.previousWinsOutofCountry }}
+					<small id="" class="form-text text-muted"></small>
+					</div>
+
+					<div class="form-group form-check">
+						<label class="form-check-label">
+						  {{ form.previousAmateurCombatSportInvolvement }} I have previous or current involvement in amateur boxing, kickboxing or any combat sport
+						</label>
+					</div>
+
+					{% if form.previousAmateurCombatSportInvolvement.value == True %}
+						<div id="previousNonBoxingOntarioExperience" class="collapse show">
+					{% else %}
+						<div id="previousNonBoxingOntarioExperience" class="collapse">
+					{% endif %}
+					{% if form.previousAmateurBouts.errors %}<div class="alert alert-danger">{{ form.previousAmateurBouts.errors}}</div>{% endif %}
+					<label for=previousAmateurBouts"> Previous Amateur Bouts</label>
+					{{ form.previousAmateurBouts }}
+					<small id="" class="form-text text-muted"></small>
+					{% if form.previousAmateurWins.errors %}<div class="alert alert-danger">{{ form.previousAmateurWins.errors}}</div>{% endif %}
+					<label for=previousAmateurWins"> Previous Amateur Wins</label>
+					{{ form.previousAmateurWins }}
+					<small id="" class="form-text text-muted"></small>
+					{% if form.previousAmateurKOs.errors %}<div class="alert alert-danger">{{ form.previousAmateurKOs.errors}}</div>{% endif %}
+					<label for=previousAmateurKOs"> Previous Amateur KOs</label>
+					{{ form.previousAmateurKOs }}
+					<small id="" class="form-text text-muted"></small>
+					{% if form.previousAmateurTKOs.errors %}<div class="alert alert-danger">{{ form.previousAmateurTKOs.errors}}</div>{% endif %}
+					<label for=previousAmateurTKOs"> Previous Amateur TKOs</label>
+					{{ form.previousAmateurTKOs }}
+					<small id="" class="form-text text-muted"></small>
+					</div>
+					
+
+					{% if form.instance.careerID %}
+					<button type="submit" class="btn btn-primary" style="float:right">Update</button>
+					{% else %}
+					<button type="submit" class="btn btn-primary" style="float:right">Save</button>
+					{% endif %}
+
+				</form>
+{% else %}
+	Please re-login or register from the home page.
+{% endif %}
+{% endblock %}

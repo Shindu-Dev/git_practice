@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<h1>Account Info</h1>
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <div class="card-body">
+                <h5 class="card-title">Account Info</h5>
+                <p class="card-text">Register a new user</p>
+				
+				<p class="card-text">{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}</p>
+
+				<form action="{% url 'fightscheduler:personCreateView' %}" method="post">
+					{% csrf_token %}
+					<div class="d-none">
+						{{ form.PersonID }}
+					</div>
+					<div class="form-group">
+						<strong>username</strong> {{ form.username }}
+					</div>
+					<div class="form-group">
+						<strong>password</strong> {{ form.password }}
+					</div>
+					<div class="form-group">
+						emailAddress</strong> {{ form.emailAddress }}
+					</div>
+					<button type="submit" class="btn btn-primary" style="float:right">Save</button>
+				</form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

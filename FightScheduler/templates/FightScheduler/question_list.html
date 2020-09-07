@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+<link rel="stylesheet" type="text/css" href="{% static 'FightScheduler/css/style.css' %}">
+<h1>Account Info</h1>
+<div class="row">
+
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <div class="card-body">
+			
+			{% if latest_question_list %}
+				<ul>
+				{% for question in latest_question_list %}
+					<li><a href="{% url 'fightscheduler:detail' question.id %}">{{ question.question_text }}</a></li>
+				{% endfor %}
+				</ul>
+			{% else %}
+				<p>No polls are available.</p>
+			{% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

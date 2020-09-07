@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+  <p>See you later!</p>  
+  <a href="{% url 'fightscheduler:main'%}">Click here to return to the site.</a>
+	<script>
+	window.location = "http://arctansolutions.mynetgear.com:1701/FightScheduler/";
+	</script>
+{% endblock %}

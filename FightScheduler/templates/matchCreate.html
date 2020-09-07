@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+{% if user.is_authenticated %}
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/FightScheduler/">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Match Details</li>
+  </ol>
+</nav>
+
+<p class="card-text">{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ field }} {{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
+</p>
+
+			{% if form.ShowID != '' %}
+                <h5 class="card-title">Upcoming Show Details</h5>
+				<form action="{% url 'fightscheduler:matchUpdate' %}" method="post">
+			{% else %}
+                <h5 class="card-title">Update Show Details</h5>
+				<form action="{% url 'fightscheduler:matchCreate' %}" method="post">
+			{% endif %}
+				 {% csrf_token %}
+				{{ form.MatchID }}
+
+				<div class="form-group">
+					{% if form.showDate.errors %}<div class="alert alert-danger">{{ form.showDate.errors}}</div>{% endif %}
+					<label for="show-date"> Show Date:</label>
+					{{ form.showDate}}
+					<small id="" class="form-text text-muted"></small>
+				</div>
+
+				<div class="form-group">
+					{% if form.showTime.errors %}<div class="alert alert-danger">{{ form.showTime.errors}}</div>{% endif %}
+					<label for="show-time"> Show Start Time:</label>
+					{{ form.showTime }}
+					<small id="" class="form-text text-muted"></small>
+				</div>
+				
+				<div class="form-group">
+					<table id="Show-Fights" border= 1>
+						<tr class="Show-Header" align=center cell-padding=4>
+							<td name="Bout">
+								Bout
+							</td>
+							<td name="Club">
+								Club
+							</td>
+							<td name="Fighter">
+								Fighter
+							</td>
+							<td name="Weight">
+								Weight
+							</td>
+							<td name="Age">
+								Age
+							</td>
+							<td name="Experience">
+								Experience
+							</td>
+						</tr>	
+						
+						{% for item in "1"|ljust:"10" %}
+							<tr class="Buots" cell-padding=4>
+								<td name="Bout{{ forloop.counter }}R"  rowspan="2" align=center> 
+									{{forloop.counter}}
+								</td>
+								<td name="Club{{ forloop.counter }}R">
+									<div class="form-group">
+										{% if form.clubRedID.errors %}<div class="alert alert-danger">{{ form.clubRedID.errors}}</div>{% endif %}
+											<label for=clubRedID></label>
+											{{ form.clubRedID }}
+										<small id="" class="form-text text-muted"></small>
+									</div> 
+								</td>
+								<td name="Fighter{{ forloop.counter }}R">
+									<div class="form-group">
+										{% if form.clubRedFighterID.errors %}<div class="alert alert-danger">{{ form.clubRedFighterID.errors}}</div>{% endif %}
+											<label for=clubRedFighterID></label>
+											{{ form.clubRedFighterID }}
+										<small id="" class="form-text text-muted"></small>
+									</div> 
+								</td>
+								<td name="Weight{{ forloop.counter }}R">
+									<div class="form-group">
+										{% if form.clubRedFighterWeight.errors %}<div class="alert alert-danger">{{ form.clubRedFighterWeight.errors}}</div>{% endif %}
+											<label for=clubRedFighterWeight></label>
+											{{ form.clubRedFighterWeight }}
+										<small id="" class="form-text text-muted"></small>
+									</div> 
+								</td>
+								<td name="Age{{ forloop.counter }}R">
+									<div class="form-group">
+										{% if form.clubRedFighterAge.errors %}<div class="alert alert-danger">{{ form.clubRedFighterAge.errors}}</div>{% endif %}
+											<label for=clubRedFighterAge></label>
+											{{ form.clubRedFighterAge }}
+										<small id="" class="form-text text-muted"></small>
+									</div> 
+								</td>
+								<td name="Experience{{ forloop.counter }}R">
+									<div class="form-group">
+										{% if form.clubRedFighterExp.errors %}<div class="alert alert-danger">{{ form.clubRedFighterExp.errors}}</div>{% endif %}
+											<label for=clubRedFighterExp></label>
+											{{ form.clubRedFighterExp }}
+										<small id="" class="form-text text-muted"></small>
+									</div> 
+								</td>
+							</tr>
+							<tr class="Buots" cell-padding=4>
+								<td name="Club{{ forloop.counter }}B">
+									<div class="form-group">
+										{% if form.clubBlueID.errors %}<div class="alert alert-danger">{{ form.clubBlueID.errors}}</div>{% endif %}
+											<label for=clubBlueID></label>
+											{{ form.clubBlueID }}
+										<small id="" class="form-text text-muted"></small>
+									</div> 
+								</td>
+								<td name="Fighter{{ forloop.counter }}B">
+									<div class="form-group">
+										{% if form.clubBlueFighterID.errors %}<div class="alert alert-danger">{{ form.clubBlueFighterID.errors}}</div>{% endif %}
+											<label for=clubBlueFighterID></label>
+											{{ form.clubBlueFighterID }}
+										<small id="" class="form-text text-muted"></small>
+									</div> 
+								</td>
+								<td name="Weight{{ forloop.counter }}B">
+									<div class="form-group">
+										{% if form.clubBlueFighterWeight.errors %}<div class="alert alert-danger">{{ form.clubBlueFighterWeight.errors}}</div>{% endif %}
+											<label for=clubBlueFighterWeight></label>
+											{{ form.clubBlueFighterWeight }}
+										<small id="" class="form-text text-muted"></small>
+									</div> 
+								</td>
+								<td name="Age{{ forloop.counter }}B">
+									<div class="form-group">
+										{% if form.clubBlueFighterAge.errors %}<div class="alert alert-danger">{{ form.clubBlueFighterAge.errors}}</div>{% endif %}
+											<label for=clubBlueFighterAge></label>
+											{{ form.clubBlueFighterAge }}
+										<small id="" class="form-text text-muted"></small>
+									</div> 
+								</td>
+								<td name="Experience{{ forloop.counter }}B">
+									<div class="form-group">
+										{% if form.clubBlueFighterExp.errors %}<div class="alert alert-danger">{{ form.clubBlueFighterExp.errors}}</div>{% endif %}
+											<label for=clubBlueFighterExp></label>
+											{{ form.clubBlueFighterExp }}
+										<small id="" class="form-text text-muted"></small>
+									</div> 
+								</td>
+							</tr>
+						{% endfor %}
+					</table>
+				</div>
+					{% if form.ShowID != None %}
+					<button type="submit" class="btn btn-primary" style="float:right">Update</button>
+					{% else %}
+					<button type="submit" class="btn btn-primary" style="float:right">Save</button>
+					{% endif %}
+
+				</form>
+{% else %}
+	Please re-login or register from the home page.
+{% endif %}
+{% endblock %}
