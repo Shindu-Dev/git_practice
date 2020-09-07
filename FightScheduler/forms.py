@@ -1317,14 +1317,14 @@ class SeriesForm(forms.Form): #@DEFAULT@
 	)
 
 class ShowForm(forms.ModelForm): #@DEFAULT@
-	def __init__(self, *args, **kwargs):
+	def __init__(self, *args, **kwargs): 
 		super(ShowForm, self).__init__(*args, ** kwargs)
 		self.request = kwargs.pop('request', None)
 		
 	class Meta:
 		model = Show
-		fields = [organizingOrganizationID]
-		#exclude = []
+		#fields = [ShowID, organizingOrganizationID]
+		exclude = []
 	error_css_class = 'alert alert-danger'
 	#officialsUsers = []
 	#boxersUsers = []

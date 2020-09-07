@@ -26,7 +26,7 @@ from rest_framework import viewsets
 
 from FightScheduler.models import Question, Choice, StatusCode,AccountType,Role,Address,Person,Organization,Service,AllowableService,Affiliation,PersonalInformation,Career,NonBoxerInfo,Waiver,WaiverRequirement,Signature,SignedWaiver,MedicalCert,ServiceEnrollment,MatchResultCode,Series,Show,Match,MatchRound,AccountInfo,AdminInvitationCode, AvailabilitySchedule# @MODEL_IMPORTS@
 from FightScheduler.serializers import StatusCodeSerializer,AccountTypeSerializer,RoleSerializer,AddressSerializer,PersonSerializer,OrganizationSerializer,ServiceSerializer,AllowableServiceSerializer,AffiliationSerializer,PersonalInformationSerializer,CareerSerializer,NonBoxerInfoSerializer,WaiverSerializer,WaiverRequirementSerializer,SignatureSerializer,SignedWaiverSerializer,MedicalCertSerializer,ServiceEnrollmentSerializer,MatchResultCodeSerializer,SeriesSerializer,ShowSerializer,MatchSerializer,MatchRoundSerializer# @SERIALIZER_IMPORTS@
-from FightScheduler.forms import PersonModelForm, PersonForm, PersonCreateForm, PersonUpdateForm, PersonalInformationForm, CareerForm, NonBoxerInfoForm, MatchForm, AvailabilityScheduleForm # @FORM_IMPORTS@
+from FightScheduler.forms import PersonModelForm, PersonForm, PersonCreateForm, PersonUpdateForm, PersonalInformationForm, CareerForm, NonBoxerInfoForm, MatchForm, AvailabilityScheduleForm, ShowForm # @FORM_IMPORTS@
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
